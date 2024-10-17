@@ -2,7 +2,7 @@ import getCLIName from './getCliName';
 import * as toolCache from '@actions/tool-cache';
 import * as core from '@actions/core';
 
-export default function checkForCLI() {
+export default function checkForCLI(): void {
   const toolName = getCLIName();
   const versions = toolCache.findAllVersions(toolName);
   if (versions.length < 1) {

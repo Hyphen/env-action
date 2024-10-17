@@ -5,27 +5,35 @@
 [![Check dist/](https://github.com/Hyphen/env-action/actions/workflows/check-dist.yml/badge.svg)](https://github.com/Hyphen/env-action/actions/workflows/check-dist.yml)
 [![CodeQL](https://github.com/Hyphen/env-action/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Hyphen/env-action/actions/workflows/codeql-analysis.yml)
 
-You must pass the contents of `.hxkey` file and also the environment you want to pull to this action.
-From there this action will pull the ENV secrets and output them in the requested way.
+You must pass the contents of `.hxkey` file and also the environment you want to
+pull to this action. From there this action will pull the ENV secrets and output
+them in the requested way.
 
-More information on ENV can be found in our [docs](https://docs.hyphen.ai/docs/env-secrets-management).
+More information on ENV can be found in our
+[docs](https://docs.hyphen.ai/docs/env-secrets-management).
 
 ## Outputs
 
-This actions supports output the ENV secretes in one or more ways, providing you with the flexibility
-to use ENV and build and deploy your apps the way you want.
+This actions supports output the ENV secretes in one or more ways, providing you
+with the flexibility to use ENV and build and deploy your apps the way you want.
 
-* **`file`:** This writes out .env files just like the CLI allowing you to consume using an number of standard dotenv libraries.
-* **`variable`:** This exports each variable in your ENV secret as environment variables in the runner. There is also an optional `variablePrefix` that allows you to customize the variable names.
+- **`file`:** This writes out .env files just like the CLI allowing you to
+  consume using an number of standard dotenv libraries.
+- **`variable`:** This exports each variable in your ENV secret as environment
+  variables in the runner. There is also an optional `variablePrefix` that
+  allows you to customize the variable names.
 
-For other options, their descriptions and defaults, please see the [action.yml](./action.yml) file
+For other options, their descriptions and defaults, please see the
+[action.yml](./action.yml) file
 
 ## Usage
 
 > [!IMPORTANT]
 >
 > You must have the hx cli installed in the runner and in the path for this
-> action to work. The easiest way to do this is to run the [Setup Hyphen CLI Action](https://github.com/marketplace/actions/setup-the-hyphen-cli) prior to running this action
+> action to work. The easiest way to do this is to run the
+> [Setup Hyphen CLI Action](https://github.com/marketplace/actions/setup-the-hyphen-cli)
+> prior to running this action
 
 ```yaml
 steps:
@@ -45,7 +53,7 @@ steps:
   - name: test output
     id: test-output
     run: | # This output will be masked as we add them to GitHub's secret list
-      echo "Secret: $SOME_SECRETE" 
+      echo "Secret: $SOME_SECRETE"
 ```
 
 For more information on what the Hyphen CLI can do please see our
@@ -121,7 +129,7 @@ integration-tests:
   - name: test output
     id: test-output
     run: | # This output will be masked as we add them to GitHub's secret list
-      echo "Secret: $SOME_SECRETE" 
+      echo "Secret: $SOME_SECRETE"
 ```
 
 For workflow runs, check out the

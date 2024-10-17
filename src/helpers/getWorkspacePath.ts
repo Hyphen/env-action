@@ -17,7 +17,6 @@ export default async function getWorkspacePath(
   if (!writeFiles) {
     await io.mkdirP(workspace);
   }
-  core.isDebug() &&
-    core.debug(`using the following workspace path: ${workspace}`);
+  core.debug(`using the following workspace path: ${workspace}`);
   return workspace;
 }

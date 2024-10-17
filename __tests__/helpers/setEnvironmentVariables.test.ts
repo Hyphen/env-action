@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { jest } from '@jest/globals';
 import * as core from '@actions/core';
 import * as dotenv from 'dotenv';

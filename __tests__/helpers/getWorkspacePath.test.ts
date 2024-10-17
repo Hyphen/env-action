@@ -1,9 +1,7 @@
 import { jest } from '@jest/globals';
 import * as core from '@actions/core';
 import * as io from '@actions/io';
-import getWorkspacePath, {
-  _getTempDirectory
-} from '../../src/helpers/getWorkspacePath';
+import getWorkspacePath from '../../src/helpers/getWorkspacePath';
 import getCloneLocation from '../../src/helpers/getCloneLocation';
 import path from 'path';
 

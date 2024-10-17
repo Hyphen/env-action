@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { jest } from '@jest/globals';
 import { exec } from '@actions/exec';
 import pullForEnvironment from '../../src/helpers/pullForEnvironment';
