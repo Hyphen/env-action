@@ -1,0 +1,35 @@
+name: 'Hyphen ENV'
+description: 'Pull Hyphen ENV secrets. Requires the Hyphen CLI to be installed. See: https://github.com/marketplace/actions/setup-the-hyphen-cli'
+author: 'Hyphen AI, inc'
+
+# Add your action's branding here. This will appear on the GitHub Marketplace.
+branding:
+  icon: 'lock'
+  color: 'orange'
+
+# Define your inputs here.
+inputs:
+  hxKeyFile:
+    description: 'The contents of the `.hxkey` file used to encrypt your secrets. This will NOT be sent to Hyphen!'
+    required: true
+  environment:
+    description: 'The environment for which to pull ENV secrets'
+    required: false
+    default: 'production'
+  outputs: 
+    description: > 
+      One or more ways in which to output the ENV secrets. 
+      `files`: writes the .env files to disk. 
+      `variables`: sets the environment variables in the workflow'
+    required: false
+    default: 'files'
+  variablePrefix:
+    description: 'When supplied will prefix all environment variables with the given string.'
+    required: false
+  path:
+    description: 'The path, if changed from the default, where the repository has been cloned.'
+    required: false
+
+runs:
+  using: node20
+  main: dist/index.js
