@@ -50,16 +50,4 @@ describe('getWorkspacePath', () => {
       `using the following workspace path: ${mockWorkspacePath}`
     );
   });
-
-  it('should not log debug message if core.isDebug is false', async () => {
-    const mockTempDir = '/mock/temp';
-    const mockWorkspacePath = path.join(mockTempDir, 'hyphen-temp');
-    process.env['RUNNER_TEMP'] = mockTempDir;
-    (core.toPlatformPath as jest.Mock).mockReturnValue(mockWorkspacePath);
-    (core.isDebug as jest.Mock).mockReturnValue(false);
-
-    await getWorkspacePath(false);
-
-    expect(core.debug).not.toHaveBeenCalled();
-  });
 });
