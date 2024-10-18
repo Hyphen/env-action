@@ -77,4 +77,4 @@ jobs:
       - name: test outputs
         id: test-outputs
         run: |
-          node ./integration-tests.js
+          node ./integration-test.js
