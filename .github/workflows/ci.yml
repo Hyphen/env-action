@@ -52,15 +52,29 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
+      - name: setup hx CLI
+        id: setup
+        uses: Hyphen/setup-hx-action@v1
+        with:
+          apiKey: ${{ secrets.HYPHEN_API_KEY }}
+          hyphen-dev: true
       - name: Test Local Action
         id: test-action
         uses: ./
         with:
-          apiKey: ${{ secrets.API_KEY }}
-          hyphen-dev: true
-      - name: List Project
-        id: list-project
-        run: hx project list
+          hxKeyFile: ${{ secrets.HYPHEN_KEY_FILE }}
+          environment: development
+          outputs: |-
+            files
+            variables
+      - name: test outputs
+        id: test-outputs
+        run: |
+          node ./integration-test.js
