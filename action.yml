@@ -1,6 +1,5 @@
 name: 'Hyphen ENV'
-description:
-  'Pull Hyphen ENV secrets. Requires the Hyphen CLI to be installed'
+description: 'Pull Hyphen ENV secrets. Requires the Hyphen CLI to be installed'
 author: 'Hyphen AI, inc'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
