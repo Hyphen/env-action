@@ -63,13 +63,13 @@ jobs:
         id: setup
         uses: Hyphen/setup-hx-action@v1
         with:
-          apiKey: ${{ secrets.API_KEY }}
+          apiKey: ${{ secrets.HYPHEN_API_KEY }}
           hyphen-dev: true
       - name: Test Local Action
         id: test-action
         uses: ./
         with:
-          hxKeyFile: ${{ secrets.HX_KEY_FILE }}
+          hxKeyFile: ${{ secrets.HYPHEN_KEY_FILE }}
           environment: development
           outputs: |-
             files
