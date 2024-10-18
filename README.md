@@ -5,8 +5,8 @@
 [![Check dist/](https://github.com/Hyphen/env-action/actions/workflows/check-dist.yml/badge.svg)](https://github.com/Hyphen/env-action/actions/workflows/check-dist.yml)
 [![CodeQL](https://github.com/Hyphen/env-action/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Hyphen/env-action/actions/workflows/codeql-analysis.yml)
 
-You must pass the contents of `.hxkey` file and also the environment you want to
-pull to this action. From there this action will pull the ENV secrets and output
+This action streamlines the process of pulling and using ENV secrets in GitHub workflows, ensuring secure and efficient management of environment variables for your application.
+To do this, you must pass the contents of `.hxkey` file and specify the target environment. From there, this action will pull the ENV secrets and output
 them in the requested way.
 
 More information on ENV can be found in our
@@ -14,23 +14,19 @@ More information on ENV can be found in our
 
 ## Outputs
 
-This actions supports output the ENV secretes in one or more ways, providing you
-with the flexibility to use ENV and build and deploy your apps the way you want.
+This action supports multiple output methods for ENV secrets, offering flexibility to help build and deploy your apps the way you want.
 
-- **`file`:** This writes out .env files just like the CLI allowing you to
-  consume using an number of standard dotenv libraries.
-- **`variable`:** This exports each variable in your ENV secret as environment
-  variables in the runner. There is also an optional `variablePrefix` that
-  allows you to customize the variable names.
+- **`file`:** This writes .env files, allowing you to load secrets using standard dotenv libraries.
+- **`variable`:** This exports each secret as an environment variable in the runner, with an optional `variablePrefix` for custom naming.
 
-For other options, their descriptions and defaults, please see the
+For other options, their descriptions and defaults, see the
 [action.yml](./action.yml) file
 
 ## Usage
 
 > [!IMPORTANT]
 >
-> You must have the hx cli installed in the runner and in the path for this
+> The Hyphen CLI is required for securely pulling ENV secrets from the Hyphen platform. You must have the CLI installed in the runner and in the path for this
 > action to work. The easiest way to do this is to run the
 > [Setup Hyphen CLI Action](https://github.com/marketplace/actions/setup-the-hyphen-cli)
 > prior to running this action
@@ -64,7 +60,7 @@ steps:
       echo "Secret: $SOME_SECRETE"
 ```
 
-For more information on what the Hyphen CLI can do please see our
+For more information on the Hyphen CLI, see the
 [CLI Documentation](https://docs.hyphen.ai/).
 
 ---
