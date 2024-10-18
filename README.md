@@ -41,11 +41,19 @@ steps:
     id: checkout
     uses: actions/checkout@v4
 
-  - name: Setup Hyphen CLI
-    id: setup-hx
+  - name: setup hx CLI
+    id: setup
+    uses: Hyphen/setup-hx-action@v1
+    with:
+      apiKey: ${{ secrets.HYPHEN_API_KEY }}
+      hyphen-dev: true
+
+  - name: Pull ENV secrets
+    id: pull-env
     uses: Hyphen/env-action@v1
     with:
-      hxKeyFile: ${{ secrets.HX_KEY_FILE }}
+      hxKeyFile: ${{ secrets.HYPHEN_KEY_FILE }}
+      environment: development
       outputs: |-
         files
         variables
@@ -113,23 +121,32 @@ integration-tests:
       os: [ubuntu-latest, windows-latest, macos-latest]
   runs-on: ${{ matrix.os }}
   steps:
+    - name: Use Node.js 20
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
     - name: Checkout
       id: checkout
       uses: actions/checkout@v4
-
-      - name: Setup Hyphen CLI
-    id: setup-hx
-    uses: Hyphen/env-action@v1
-    with:
-      hxKeyFile: ${{ secrets.HX_KEY_FILE }}
-      outputs: |-
-        files
-        variables
-
-  - name: test output
-    id: test-output
-    run: | # This output will be masked as we add them to GitHub's secret list
-      echo "Secret: $SOME_SECRETE"
+    - name: setup hx CLI
+      id: setup
+      uses: Hyphen/setup-hx-action@v1
+      with:
+        apiKey: ${{ secrets.HYPHEN_API_KEY }}
+        hyphen-dev: true
+    - name: Test Local Action
+      id: test-action
+      uses: ./
+      with:
+        hxKeyFile: ${{ secrets.HYPHEN_KEY_FILE }}
+        environment: development
+        outputs: |-
+          files
+          variables
+    - name: test outputs
+      id: test-outputs
+      run: | # this checks for both files and variables being set
+        node ./integration-test.js
 ```
 
 For workflow runs, check out the
