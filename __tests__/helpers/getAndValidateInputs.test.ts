@@ -8,6 +8,32 @@ describe('getAndValidateInputs', () => {
     jest.clearAllMocks();
   });
 
+  it('defaults the output to files', () => {
+    (core.getInput as jest.Mock).mockImplementation((name: string) => {
+      switch (name) {
+        case 'hxKeyFile':
+          return 'keyfile';
+        case 'environment':
+          return 'production';
+        case 'variablePrefix':
+          return 'prefix';
+        default:
+          return '';
+      }
+    });
+    (core.getMultilineInput as jest.Mock).mockReturnValue(undefined);
+
+    const result = getAndValidateInputs();
+
+    expect(result).toEqual({
+      hxKeyFile: 'keyfile',
+      environment: 'production',
+      writeFiles: true,
+      writeVariables: false,
+      variablePrefix: 'prefix'
+    });
+  });
+
   it('should return valid outputs', () => {
     (core.getInput as jest.Mock).mockImplementation((name: string) => {
       switch (name) {

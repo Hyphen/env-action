@@ -28738,7 +28738,7 @@ function getAndValidateInputs() {
     const hxKeyFile = core.getInput('hxKeyFile', { required: true });
     const environment = core.getInput('environment', { required: true });
     const variablePrefix = core.getInput('variablePrefix') || '';
-    const outputs = core.getMultilineInput('outputs') || [];
+    const outputs = core.getMultilineInput('outputs') || ['files'];
     const parsedOutputs = outputs.reduce((acc, output) => {
         if (constants_1.validOutputTypes.includes(output)) {
             acc.valid.push(output);
