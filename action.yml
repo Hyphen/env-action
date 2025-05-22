@@ -9,11 +9,6 @@ branding:
 
 # Define your inputs here.
 inputs:
-  hxKeyFile:
-    description:
-      'The contents of the `.hxkey` file used to encrypt your secrets. This will
-      NOT be sent to Hyphen!'
-    required: true
   environment:
     description: 'The environment for which to pull ENV secrets'
     required: false
@@ -25,6 +20,12 @@ inputs:
       workflow'
     required: false
     default: 'files'
+  hxKeyFile:
+    description:
+      'If you are not using the Hyphen Secure Key store, set this to the
+      contents of the `.hxkey` file used to encrypt your secrets. This will NOT
+      be sent to Hyphen!'
+    required: false
   variablePrefix:
     description:
       'When supplied will prefix all environment variables with the given

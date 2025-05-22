@@ -8,7 +8,7 @@ export default function getAndValidateInputs(): {
   environment: string;
   variablePrefix: string;
 } {
-  const hxKeyFile = core.getInput('hxKeyFile', { required: true });
+  const hxKeyFile = core.getInput('hxKeyFile');
   const environment = core.getInput('environment', { required: true });
   const variablePrefix = core.getInput('variablePrefix') || '';
   const outputs = core.getMultilineInput('outputs') || ['files'];

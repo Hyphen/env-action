@@ -54,7 +54,6 @@ steps:
     id: pull-env
     uses: Hyphen/env-action@v1
     with:
-      hxKeyFile: ${{ secrets.HYPHEN_KEY_FILE }}
       environment: development
       outputs: |-
         files

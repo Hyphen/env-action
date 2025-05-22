@@ -12,6 +12,8 @@ export default async function setupMetaDataFiles(
     await io.cp(path.join(getCloneLocation(), '.hx'), workspace);
   }
 
-  const hxKeyFilePath = path.join(workspace, '.hxkey');
-  await fs.writeFile(hxKeyFilePath, hxKeyFile, 'utf8');
+  if (hxKeyFile && hxKeyFile.length > 0) {
+    const hxKeyFilePath = path.join(workspace, '.hxkey');
+    await fs.writeFile(hxKeyFilePath, hxKeyFile, 'utf8');
+  }
 }
