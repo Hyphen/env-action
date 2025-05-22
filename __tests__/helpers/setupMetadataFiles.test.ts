@@ -30,6 +30,13 @@ describe('setupMetaDataFiles', () => {
     );
   });
 
+  it('should only write the .hxkey if there is a value', async () => {
+    await setupMetadataFiles(mockWorkspace, '', true);
+
+    expect(io.cp).not.toHaveBeenCalled();
+    expect(fs.writeFile).not.toHaveBeenCalled();
+  });
+
   it('should copy the .hx directory and write the .hxkey file when writeFiles is false', async () => {
     await setupMetadataFiles(mockWorkspace, mockHxKeyFile, false);
 

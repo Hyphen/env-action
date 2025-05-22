@@ -28735,7 +28735,7 @@ exports["default"] = getAndValidateInputs;
 const core = __importStar(__nccwpck_require__(7484));
 const constants_1 = __nccwpck_require__(7242);
 function getAndValidateInputs() {
-    const hxKeyFile = core.getInput('hxKeyFile', { required: true });
+    const hxKeyFile = core.getInput('hxKeyFile');
     const environment = core.getInput('environment', { required: true });
     const variablePrefix = core.getInput('variablePrefix') || '';
     const outputs = core.getMultilineInput('outputs') || ['files'];
@@ -29033,8 +29033,10 @@ async function setupMetaDataFiles(workspace, hxKeyFile, writeFiles) {
     if (!writeFiles) {
         await io.cp(path_1.default.join((0, getCloneLocation_1.default)(), '.hx'), workspace);
     }
-    const hxKeyFilePath = path_1.default.join(workspace, '.hxkey');
-    await promises_1.default.writeFile(hxKeyFilePath, hxKeyFile, 'utf8');
+    if (hxKeyFile && hxKeyFile.length > 0) {
+        const hxKeyFilePath = path_1.default.join(workspace, '.hxkey');
+        await promises_1.default.writeFile(hxKeyFilePath, hxKeyFile, 'utf8');
+    }
 }
 
 
