@@ -1,7 +1,7 @@
 {
   "name": "env-action",
   "description": "Pull Hyphen ENV secrets. Requires the Hyphen CLI to be installed. See: https://github.com/marketplace/actions/setup-the-hyphen-cli",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "author": "Hyphen AI, inc",
   "private": true,
   "homepage": "https://github.com/Hyphen/env-action",
